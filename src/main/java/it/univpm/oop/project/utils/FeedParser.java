@@ -1,11 +1,8 @@
 package it.univpm.oop.project.utils;
 
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import com.vdurmont.emoji.EmojiManager;
-
 import it.univpm.oop.project.model.Attachment;
 import it.univpm.oop.project.model.Comment;
 import it.univpm.oop.project.model.Feed;
@@ -13,10 +10,18 @@ import it.univpm.oop.project.model.Post;
 import it.univpm.oop.project.model.Stats;
 
 
+/**
+ * The Class FeedParser.
+ */
 public class FeedParser {
-//dato un feed mi da stats
 	
 
+	/**
+	 * Gets the stats.
+	 *
+	 * @param feed the feed
+	 * @return the stats
+	 */
 	public static Stats getStats(Feed feed) {
 		
 		int emoticonComments = 0;

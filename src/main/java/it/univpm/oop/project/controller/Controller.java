@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import it.univpm.oop.project.service.ProjectService;
 
-/**
-	 * Controller for PostMan
-	 * @author Andrea and Giuseppe
-	 *
+
+
+	/**
+	 * The Class Controller.
 	 */
 	@RestController
 	public class Controller {
-		/**
-		 * The service that provides all the requests
-		 */	
+
+		/** The service. */
 		@Autowired
 	    private ProjectService service;
-		/*
-		@GetMapping("/students/{studentId}/courses")
-		public List<Course> retrieveCoursesForStudent(@PathVariable String studentId) {
-			return studentService.retrieveCourses(studentId);
-		}
+		
+
 		/**
-		 * GET /Feed
-		 * @return all the feed
+		 * Feed.
+		 *
+		 * @return the response entity
 		 */
 		@GetMapping("/feed")
 		public ResponseEntity<Object> Feed(){
 			return new ResponseEntity<>(service.getFeed(), HttpStatus.OK);
 		}
+		
+
 		/**
-		 * GET /feed/comments
-		 * @return all the comments 
+		 * Repository.
+		 *
+		 * @return the response entity
 		 */
 		@GetMapping("/feed/comments")
 		public ResponseEntity<Object> Repository(){
@@ -43,19 +43,22 @@ import it.univpm.oop.project.service.ProjectService;
 		}
 		
 		
+
 		/**
-		 * GET /Comments(Filter)
-		 * @return the comments filtered
+		 * Filtered comments.
+		 *
+		 * @param filter the filter
+		 * @return the response entity
 		 */
 		@GetMapping("/feed/comments/{filter}")
 		public ResponseEntity<Object> filteredComments(@PathVariable("filter") String filter) {
 			return new ResponseEntity<>(service.getFilteredComments(filter),HttpStatus.OK);
 		}
-		
-		
+
 		/**
-		 * GET /Stats 
-		 * @return all the stats
+		 * Stats.
+		 *
+		 * @return the response entity
 		 */
 		@GetMapping("/stats")
 		public ResponseEntity<Object> Stats(){

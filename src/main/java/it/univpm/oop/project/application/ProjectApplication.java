@@ -20,26 +20,51 @@ import it.univpm.oop.project.service.ProjectService;
 import it.univpm.oop.project.utils.FeedParser;
 import it.univpm.oop.project.utils.RepoFiller;
 
+
 /**
- * The SpringBoot Application starts.
- * @author Andrea and Giuseppe
- *
+ * The Class ProjectApplication.
  */
 @SpringBootApplication
 @ComponentScan({"it.univpm.oop.project.controller", "it.univpm.oop.project.utils","it.univpm.oop.project.service"})
 public class ProjectApplication {
 
+	
+	/** The Constant log. */
 	private static final Logger log = LoggerFactory.getLogger(ProjectApplication.class);
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws JsonParseException the json parse exception
+	 * @throws JsonMappingException the json mapping exception
+	 * @throws MalformedURLException the malformed URL exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws JsonParseException, JsonMappingException, MalformedURLException, IOException {
 		SpringApplication.run(ProjectApplication.class, args);
 	}
 
+	
+	/**
+	 * Rest template.
+	 *
+	 * @param builder the builder
+	 * @return the rest template
+	 */
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
 
+	
+	/**
+	 * Run.
+	 *
+	 * @param restTemplate the rest template
+	 * @return the command line runner
+	 * @throws Exception the exception
+	 */
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
@@ -58,6 +83,7 @@ public class ProjectApplication {
 			Stats stats = FeedParser.getStats(feed);
 			ProjectService.setStats(stats);
 			
+			//repo.storeFeed(feed);
 		};
 	}
 	
