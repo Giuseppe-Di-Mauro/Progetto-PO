@@ -51,9 +51,8 @@ public class ProjectApplication {
 			ProjectService.setFeed(feed);
 			
 			//per il service /feed/comments
-			Feed fed = restTemplate.getForObject(url, Feed.class, fields);
-			Repository repo = RepoFiller.fillRepo(fed);
-			ProjectService.setComments(repo);
+			Repository repo = RepoFiller.fillRepo(feed);
+			ProjectService.setRepository(repo);
 			
 			//per il service /stats
 			Stats stats = FeedParser.getStats(feed);

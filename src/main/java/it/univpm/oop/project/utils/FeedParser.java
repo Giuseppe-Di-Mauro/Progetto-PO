@@ -3,7 +3,9 @@ package it.univpm.oop.project.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import com.vdurmont.emoji.EmojiManager;
+
 import it.univpm.oop.project.model.Attachment;
 import it.univpm.oop.project.model.Comment;
 import it.univpm.oop.project.model.Feed;
@@ -35,34 +37,36 @@ public class FeedParser {
 				sumCommentsLength += message.length();
 				if(message.length()>maxCommentsLength) maxCommentsLength= message.length();
 				if(message.length()<minCommentsLength) minCommentsLength= message.length();
-				} catch (NullPointerException e) {};
+				} catch (NullPointerException e) {e.printStackTrace();};
 				
 				//hashtag
 				try{
 				Pattern patt = Pattern.compile("(#\\w+)\\b");
 	            Matcher match = patt.matcher(message);
-	            if(match.find()) {
-	                 hashtagComments++;  
-	                 }
-				} catch (NullPointerException e) {};
+	            if(match.find())  hashtagComments++;  
+				} catch (NullPointerException e) {e.printStackTrace();} 
 				
 	            
 	            //emoticon
 				try {
 	            if(EmojiManager.containsEmoji(message)) emoticonComments++;
-				} catch (NullPointerException e) {};
+				} catch (NullPointerException e) {e.printStackTrace();};
+				
+				
 	            //media
 				try {
-	            Attachment attach= comment.getAttachment();
-	            String src = attach.getMedia().getImage().getSrc();
-	            if(src!=null) mediaComments++;
-				} catch (NullPointerException e) {};
+					Attachment attach = comment.getAttachment();
+					if(!attach.equals(null)) {
+						String src = attach.getMedia().getImage().getSrc();
+						if(!src.equals(null)) mediaComments++;
+						}
+					} catch (NullPointerException e) {e.printStackTrace();};
 	            
 			}
 			
 		}
 		averageCommentsLength = sumCommentsLength / numberComments;
-		} catch (NullPointerException e) {};
+		} catch (NullPointerException e) {e.printStackTrace();};
 		
 		return new Stats( mediaComments,  hashtagComments,  sumCommentsLength,  averageCommentsLength,
 				 minCommentsLength,  maxCommentsLength,  emoticonComments);

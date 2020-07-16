@@ -1,25 +1,42 @@
 package it.univpm.oop.project.model;
 
+
 import java.util.ArrayList;
+import it.univpm.oop.project.exception.FilterException;
+import it.univpm.oop.project.repository.Repository;
+import it.univpm.oop.project.utils.filters.FilterEmoticon;
+import it.univpm.oop.project.utils.filters.FilterHashtag;
+import it.univpm.oop.project.utils.filters.FilterMedia;
+
 
 public class Filter {
 	
-	public boolean filter (Feed feed) {
+	public static boolean filter(Comment comment) {
 		return true;
 	}
 	
 	
-	public ArrayList <Comment> filteredComments(Object param1, Object param2) {
+	public static ArrayList <Comment> filteredComments(Repository repo, String filter) {
 		
-		ArrayList <Comment> positiveComments = new ArrayList <>();
-	//	Database database = new Database();
-	//	FrontDatabase frontDatabase = new FrontDatabase();
-		
-		for (int i = 0; i < repo.getDatabase().size(); i++){
-			if (filter(repo.getDatabase().elementAt(i), param1, param2)) {
-				positiveComments.add(repo.getFrontDatabase().elementAt(i));
+		ArrayList <Comment> list = new ArrayList <>();
+		for(Comment comment: repo.getComments()) {
+			try {
+				boolean ok = Filter.detectFilter(filter, comment);
+				if(ok) list.add(comment);
+			} catch (FilterException e) {
+				e.printStackTrace();
 			}
 		}
-		return positiveComments;
+	
+		return (ArrayList<Comment>) list;
+	}
+	
+	public static boolean detectFilter(String filter, Comment comment) throws FilterException {
+		if (filter.equals("emoticon")) return FilterEmoticon.filter(comment);
+		if (filter.equals("hashtag")) return FilterHashtag.filter(comment);
+		if (filter.equals("media")) return FilterMedia.filter(comment);
+		else { 
+			throw new FilterException("Filter not valid");
+		}
 	}
 }
