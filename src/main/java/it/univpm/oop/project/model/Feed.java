@@ -3,9 +3,8 @@ package it.univpm.oop.project.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class Feed {
+	
 	private List<Post> data = new ArrayList<>();
 	
 
@@ -15,7 +14,6 @@ public class Feed {
 
 	public void setData(List<Post> data) {
 		this.data = data;
-	}
-	
+	}	
 	
 }

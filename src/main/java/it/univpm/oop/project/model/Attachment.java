@@ -23,11 +23,6 @@ public class Attachment {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	@Override
-	public String toString() {
-		return "[media=" + media.toString() + ", type=" + type + ", url=" + url + "]";
-	}
-	
-	
+
 	
 }
