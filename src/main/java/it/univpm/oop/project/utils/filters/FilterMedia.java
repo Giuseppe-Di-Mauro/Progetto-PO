@@ -1,14 +1,18 @@
 package it.univpm.oop.project.utils.filters;
 
-import it.univpm.oop.project.model.Feed;
+import it.univpm.oop.project.model.Attachment;
+import it.univpm.oop.project.model.Comment;
 import it.univpm.oop.project.model.Filter;
-import it.univpm.oop.project.utils.FeedParser;
 
 public class FilterMedia extends Filter {
 	
-	public boolean filter(Feed feed) {
-		if(FeedParser.getStats(feed).getMediaComments()>0) return true;
+	public static boolean filter(Comment comment) {
+		try {
+        Attachment attach= comment.getAttachment();
+        String src = attach.getMedia().getImage().getSrc();
+        if(src!=null) return true;
+        } catch (NullPointerException e) {}
 		return false;
 	}
-	
 }
+	

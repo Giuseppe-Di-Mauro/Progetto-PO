@@ -1,7 +1,8 @@
 package it.univpm.oop.project.service;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Service;
-import it.univpm.oop.project.exception.FilterException;
 import it.univpm.oop.project.model.*;
 import it.univpm.oop.project.repository.Repository;
 
@@ -14,27 +15,14 @@ import it.univpm.oop.project.repository.Repository;
 public class ProjectService {
 	private static Feed feed;
 	private static Stats stats;
-	private static Repository comments;
+	private static Repository repository;
 
-	/*public List<Course> retrieveCourses(String studentId) {
-		Student student = retrieveStudent(studentId);
-		
-		if(studentId.equalsIgnoreCase("Student1")){
-			throw new RuntimeException("Something went wrong");
-		}
-
-		if (student == null) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
-		return student.getCourses();
-	}*/
-	public Repository getComments() {
-		return comments;
+	public Repository getRepository() {
+		return repository;
 	}
 
-	public static void setComments(Repository comments) {
-		ProjectService.comments = comments;
+	public static void setRepository(Repository repo) {
+		ProjectService.repository = repo;
 	}
 
 	public Feed getFeed() {
@@ -52,16 +40,9 @@ public class ProjectService {
 	public static void setStats(Stats stats) {
 		ProjectService.stats = stats;
 	}
-
-
-	public String detectFilter(String filter) throws FilterException {
-		if (filter.equals("averageLength"))
-			return "average";
-		if (filter.equals("emoticon"))
-			return "emoticon";
-		if (filter.equals("hashtag"))
-			return "hashtag";
-		else
-			throw new FilterException("Filter not valid for the stats");
-	} 
+	
+	public ArrayList<Comment> getFilteredComments(String filter) {
+		return (ArrayList<Comment>) Filter.filteredComments(this.getRepository(), filter);
+	}
+	 
 }

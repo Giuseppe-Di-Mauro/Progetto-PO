@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import it.univpm.oop.project.service.ProjectService;
 
@@ -38,7 +39,7 @@ import it.univpm.oop.project.service.ProjectService;
 		 */
 		@GetMapping("/feed/comments")
 		public ResponseEntity<Object> Repository(){
-			return new ResponseEntity<>(service.getComments(), HttpStatus.OK);	
+			return new ResponseEntity<>(service.getRepository(), HttpStatus.OK);	
 		}
 		
 		
@@ -46,10 +47,10 @@ import it.univpm.oop.project.service.ProjectService;
 		 * GET /Comments(Filter)
 		 * @return the comments filtered
 		 */
-		/*@GetMapping("/FilterComments")
-		public ResponseEntity<Object> getComments(@RequestBody String filter) {
-			return new ResponseEntity<>(service,HttpStatus.OK);
-		}*/
+		@GetMapping("/feed/comments/{filter}")
+		public ResponseEntity<Object> filteredComments(@PathVariable("filter") String filter) {
+			return new ResponseEntity<>(service.getFilteredComments(filter),HttpStatus.OK);
+		}
 		
 		
 		/**
@@ -61,15 +62,5 @@ import it.univpm.oop.project.service.ProjectService;
 			return new ResponseEntity<>(service.getStats(),HttpStatus.OK);	
 		}
 		
-		
-		/**
-		 * GET /Stats(Filter)
-		 * @return the stats filtered
-		 */
-	//	@GetMapping("/FilterStats")
-	//	public ResponseEntity<Object> getStatistics(@RequestBody String filter) throws FormatException, MismatchTypeFilterException, FieldException, OperatorException{
-	//		return new ResponseEntity<>(service.getStats(filter),HttpStatus.OK);
-	//			
-	//	}
 		
 }

@@ -1,11 +1,17 @@
 package it.univpm.oop.project.utils.filters;
-import it.univpm.oop.project.model.*;
-import it.univpm.oop.project.utils.FeedParser;
 
-public class FilterHashtag extends Filter{
-	
-	public boolean filter(Feed feed) {
-		if(FeedParser.getStats(feed).getHashtagComments()>0) return true;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import it.univpm.oop.project.model.Comment;
+import it.univpm.oop.project.model.Filter;
+
+public class FilterHashtag extends Filter {
+	public static boolean filter(Comment comment) {
+		try {
+		Pattern patt = Pattern.compile("(#\\w+)\\b");
+        Matcher match = patt.matcher(comment.getMessage());
+		if(match.find()) return true;
+		} catch (NullPointerException e) {}
 		return false;
 	}
 }
