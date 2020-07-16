@@ -5,7 +5,17 @@ import java.util.regex.Pattern;
 import it.univpm.oop.project.model.Comment;
 import it.univpm.oop.project.model.Filter;
 
+/**
+ * The Class FilterHashtag.
+ */
 public class FilterHashtag extends Filter {
+	
+	/**
+	 * Filter.
+	 *
+	 * @param comment the comment
+	 * @return true, if successful
+	 */
 	public static boolean filter(Comment comment) {
 		try {
 		Pattern patt = Pattern.compile("(#\\w+)\\b");

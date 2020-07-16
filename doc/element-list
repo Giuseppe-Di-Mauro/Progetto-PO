@@ -1,1 +1,8 @@
 it.univpm.oop.project.application
+it.univpm.oop.project.controller
+it.univpm.oop.project.exception
+it.univpm.oop.project.model
+it.univpm.oop.project.repository
+it.univpm.oop.project.service
+it.univpm.oop.project.utils
+it.univpm.oop.project.utils.filters

@@ -6,8 +6,17 @@ import it.univpm.oop.project.model.Comment;
 import it.univpm.oop.project.model.Feed;
 import it.univpm.oop.project.repository.Repository;
 
+/**
+ * The Class RepoFiller.
+ */
 public class RepoFiller {
 	
+	/**
+	 * Fill repository.
+	 *
+	 * @param feed the feed
+	 * @return the repository
+	 */
 	public static Repository fillRepo(Feed feed) {
 		
 		ArrayList<ArrayList<Comment>> list = new ArrayList<ArrayList<Comment>>();
