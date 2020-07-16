@@ -1,12 +1,20 @@
 package it.univpm.oop.project.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import it.univpm.oop.project.model.Comment;
+import it.univpm.oop.project.model.Feed;
 import it.univpm.oop.project.repository.Repository;
 
 public class RepoFiller {
-	public static Repository fillRepo(List<List<Comment>> list) {
-		List<Comment> l2= null;
+	
+	public static Repository fillRepo(Feed fed) {
+		
+		ArrayList<ArrayList<Comment>> list = new ArrayList<ArrayList<Comment>>();
+		for(int i=0; i<fed.getData().size() ; i++) {
+			list.add((ArrayList<Comment>) fed.getData().get(i).getComments().getData());
+		}
+		ArrayList<Comment> l2= new ArrayList<>();
 			for(List<Comment> l1: list) {
 				for(Comment comm: l1) {
 					l2.add(comm);
@@ -17,3 +25,4 @@ public class RepoFiller {
 	
 	}
 }
+

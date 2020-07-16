@@ -30,9 +30,6 @@ import it.univpm.oop.project.service.ProjectService;
 		 */
 		@GetMapping("/feed")
 		public ResponseEntity<Object> Feed(){
-// DEBUG
-//			ResponseEntity<Object> tmp = new ResponseEntity<>(service.getFeed(), HttpStatus.OK);
-//			System.out.println(tmp.toString());
 			return new ResponseEntity<>(service.getFeed(), HttpStatus.OK);
 		}
 		/**
@@ -40,7 +37,7 @@ import it.univpm.oop.project.service.ProjectService;
 		 * @return all the comments 
 		 */
 		@GetMapping("/feed/comments")
-		public ResponseEntity<Object> Comments(){
+		public ResponseEntity<Object> Repository(){
 			return new ResponseEntity<>(service.getComments(), HttpStatus.OK);	
 		}
 		
