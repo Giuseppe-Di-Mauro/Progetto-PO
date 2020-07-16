@@ -2,10 +2,17 @@ package it.univpm.oop.project.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.StringReader;
 import java.util.List;
+import java.util.Map;
 
 import org.json.*;
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import it.univpm.oop.project.model.*;
@@ -13,7 +20,7 @@ import it.univpm.oop.project.model.*;
 
 public class JSONParser {
 
-
+/*
 	public JSONParser() {
 	ObjectMapper objectMapper = new ObjectMapper() ; 
 
@@ -26,8 +33,8 @@ public class JSONParser {
        e.printStackTrace();
     }
 	}
-	
-    private static void printParsedObject(Feed feed) {
+	*/
+    public static void printParsedObject(Feed feed) {
         printData(feed.getData());
     }
 
@@ -42,7 +49,7 @@ public class JSONParser {
 
     private static void printPost(Post post) {
         System.out.println("\n\tPost Id                   : " + post.getId());
-        printComment(post.getData());
+        printComment(post.getComments().getData());
         
     }
     
@@ -58,4 +65,30 @@ public class JSONParser {
     
    
 }
+	
+	
+	/*public static void JSONParsing(String resp) {
+	JsonParser springParser = JsonParserFactory.getJsonParser();
+	Map<String, Object> map = springParser.parseMap(resp);
+
+	String mapArray[] = new String[map.size()];
+	System.out.println("Items found: " + mapArray.length);
+
+	int i = 0;
+	for (Map.Entry<String, Object> entry : map.entrySet()) {
+			System.out.println(entry.getKey() + " = " + entry.getValue());
+			i++;
+}}
+	
+	public static void JSONParsing(String resp) throws JsonMappingException, JsonProcessingException {
+	ObjectMapper objectMapper = new ObjectMapper();
+	//convert json file to map
+	Map<?, ?> map = objectMapper.readValue(resp, Map.class);
+	//iterate over map entries and print to console
+	for (Map.Entry<?, ?> entry : map.entrySet()) {
+	    System.out.println(entry.getKey() + "=" + entry.getValue());
+	}*/
+	
 }
+
+

@@ -2,15 +2,15 @@ package it.univpm.oop.project.model;
 
 
 public class Comment {
-	
-	private String message;
-	private String id;
+
 	private Attachment attachment;
-	public String getMessage() {
-		return message;
+	private String id;
+	private String message;
+	public Attachment getAttachment() {
+		return attachment;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setAttachment(Attachment attachment) {
+		this.attachment = attachment;
 	}
 	public String getId() {
 		return id;
@@ -18,14 +18,13 @@ public class Comment {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Attachment getAttachment() {
-		return attachment;
+	public String getMessage() {
+		return message;
 	}
-	public void setAttachment(Attachment attachment) {
-		this.attachment = attachment;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
-	
-	
-	
+
+		
 }
