@@ -1,11 +1,6 @@
 package it.univpm.oop.project.service;
 
-
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import it.univpm.oop.project.exception.FilterException;
 import it.univpm.oop.project.model.*;
 import it.univpm.oop.project.repository.Repository;
