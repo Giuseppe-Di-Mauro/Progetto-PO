@@ -3,7 +3,7 @@ package it.univpm.oop.project.exception;
 /**
  * The Class MediaNotFoundEx.
  */
-public class MediaNotFoundEx extends Exception {
+public class MediaNotFoundEx extends RuntimeException {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -9178400518901835497L;

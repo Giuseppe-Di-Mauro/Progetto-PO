@@ -83,7 +83,6 @@ public class ProjectApplication {
 			Stats stats = FeedParser.getStats(feed);
 			ProjectService.setStats(stats);
 			
-			//repo.storeFeed(feed);
 		};
 	}
 	

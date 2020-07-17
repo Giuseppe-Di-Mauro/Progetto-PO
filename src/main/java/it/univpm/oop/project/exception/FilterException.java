@@ -3,7 +3,7 @@ package it.univpm.oop.project.exception;
 /**
  * The Class FilterException.
  */
-public class FilterException extends Exception {
+public class FilterException extends RuntimeException {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 6709863867521990083L;
