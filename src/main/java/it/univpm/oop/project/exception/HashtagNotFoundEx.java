@@ -3,7 +3,7 @@ package it.univpm.oop.project.exception;
 /**
  * The Class HashtagNotFoundEx.
  */
-public class HashtagNotFoundEx extends Exception {
+public class HashtagNotFoundEx extends RuntimeException {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = -7699845908825717006L;
