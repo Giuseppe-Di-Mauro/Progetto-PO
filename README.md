@@ -225,16 +225,17 @@ Nel package Utils c'è un'altro package chiamato Filters. Come si intuisce, qui 
 ### Exception
 
 
-* HashtagNotFoundEx: eccezione che mi stampa in output un messaggio se nel FeedParser
+* HashtagNotFoundEx: eccezione che mi stampa in output un messaggio se nel commento
 non trova nessun hashtag 
 
-* EmoticonNotFoundEx: eccezione che mi stampa in output un messaggio se nel FeedParser 
-non trova nessun emoticon.
+* EmoticonNotFoundEx: eccezione che mi stampa in output un messaggio se nel commento 
+non trova nessun emoticon
 
 
-* FilterException 
+* MediaNotFoundEx: eccezione che mi stampa in output un messaggio se nel commento non è allegato
+nessun file multimediale
 
-* MediaNotFoundEx 
+* FilterException: eccezione che mi stampa in output un messaggio se il filtro passato non è consentito
 
 > Tutte le eccezioni create sono una estenzione di Exception
 
