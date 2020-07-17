@@ -33,15 +33,14 @@ public class Filter {
 	public static ArrayList <Comment> filteredComments(Repository repo, String filter) {
 		
 		ArrayList <Comment> list = new ArrayList <>();
+		try {
 		for(Comment comment: repo.getComments()) {
-			try {
 				boolean ok = Filter.detectFilter(filter, comment);
 				if(ok) list.add(comment);
-			} catch (FilterException e) {
-				e.printStackTrace();
-			}
 		}
-	
+		} catch (FilterException e) {
+			e.printStackTrace();
+		}
 		return (ArrayList<Comment>) list;
 	}
 	
