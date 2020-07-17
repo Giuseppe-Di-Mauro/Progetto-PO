@@ -241,8 +241,6 @@ nessun file multimediale
 
 ---
 
-### Tests
-
 # Autori
 
 [Andrea Langiotti](https://github.com/Langiott).
